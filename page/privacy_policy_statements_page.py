@@ -12,7 +12,7 @@ class PrivacyPolicyStatements(Base):
     AGREE_BUTTON = ('id', 'hko.MyObservatory_v1_0:id/btn_agree')
 
     def statements_here(self):
-        self.wait_visible(self.STATEMENTS_TITLE)
+        self.is_visible(self.STATEMENTS_TITLE)
 
     def statements_agree(self):
         self.click(self.AGREE_BUTTON)

@@ -37,7 +37,7 @@ class PageUtils:
         elif method == 'id':
             return self.driver.find_element(By.ID, value)
         elif method == 'xpath':
-            return self.driver.find_element_by_xpath(value)
+            return self.driver.find_element(By.XPATH, value)
         elif method == 'name':
             return self.driver.find_element_by_name(value)
         else:
@@ -70,7 +70,7 @@ class PageUtils:
         elif method == 'id':
             return self.driver.find_elements(By.ID, value)
         elif method == 'xpath':
-            return self.driver.find_elements_by_xpath(value)
+            return self.driver.find_element(By.XPATH, value)
         elif method == 'name':
             return self.driver.find_elements_by_name(value)
         else:
@@ -127,18 +127,15 @@ class PageUtils:
 
     def android_scroll(self, locator):
         for _ in range(15):
-            x = 950
+            end_y = 950
             try:
                 value = self.get_element(locator).is_displayed()
                 if value is True:
                     break
             except NoSuchElementException:
-                # swipe(start_x, start_y, end_x, end_y, duration)
-                self.driver.swipe(470, 1400, 470, x, 330)
+                self.driver.swipe(370, 1400, 370, end_y, 330)
                 self.driver.implicitly_wait(2)
                 continue
-
-        # ios scroll
 
     def ios_scroll(self, locator):
         el = self.wait_visible(locator)
@@ -157,3 +154,5 @@ class PageUtils:
     def get_text(self, locator):
         element = self.wait_visible(locator)
         return element.text
+
+

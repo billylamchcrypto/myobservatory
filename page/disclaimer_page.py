@@ -15,7 +15,7 @@ class Disclaimer(Base):
         self.click(self.AGREE_BUTTON)
 
     def disclaimer_here(self):
-        self.wait_visible(self.DISCLAIMER_TITLE)
+        self.is_visible(self.DISCLAIMER_TITLE)
 
 
 

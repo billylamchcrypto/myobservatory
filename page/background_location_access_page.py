@@ -12,7 +12,7 @@ class BackgroundLocationAccess(Base):
     OK_BUTTON = ('id', 'android:id/button1')
 
     def background_location_access_here(self):
-        self.wait_visible(self.BACKGROUND_LOCATION_ACCESS_TITLE)
+        self.is_visible(self.BACKGROUND_LOCATION_ACCESS_TITLE)
 
     def background_location_access_ok(self):
         self.click(self.OK_BUTTON)

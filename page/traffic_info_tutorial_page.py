@@ -12,7 +12,7 @@ class TrafficInfoTutorial(Base):
     CLOSE_BUTTON = ('id', 'hko.MyObservatory_v1_0:id/btn_friendly_reminder_skip')
 
     def traffic_info_tutorial_here(self):
-        self.wait_visible(self.TRAFFIC_INFO_TITLE)
+        self.is_visible(self.TRAFFIC_INFO_TITLE)
 
     def traffic_info_tutorial_close(self):
         self.click(self.CLOSE_BUTTON)

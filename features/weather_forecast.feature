@@ -12,12 +12,11 @@ Feature: Weather Forecast
     When the user clicks Allow only while using the app
     Then the user is redirected to the device location access page with time factor
     When the user clicks Allow all the time
-    Then the user is redirected to the What's new page
-    When the user clicks the next button
+    Then the user is redirected to the Whats new page
+    When the user clicks the next button in whats new page
     Then the user is redirected to the Traffic Information Tutorial page
-    When the user clicks the close button
-    Then the user is redirected to the home page
+    When the user clicks the close button in Traffic Information Tutorial page
+    Then the user is redirected to the Home page
     When the user clicks the menu bar
-    And the user scroll down in menu bar
-    And the user clicks the "9-Day Forecast" from the menu bar
-    Then the user can see the "9-Day Forecast"
+    Then the user scroll down in menu bar and clicks the "9-Day Forecast" from the menu bar
+    And the user can see the "9-Day Forecast"
