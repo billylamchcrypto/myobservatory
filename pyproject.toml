@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "billy-obs"
+version = "0.1.0"
+description = ""
+authors = ["billylam <billy.lam@crypto.com>"]
+readme = "README.md"
+packages = [{include = "billy_obs"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pytest = "^7.3.1"
+pytest-bdd = "^6.1.1"
+appium-python-client = "^2.10.1"
+pyhamcrest = "^2.0.4"
+pyaml = "^23.5.9"
+pyyaml = "^5.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
