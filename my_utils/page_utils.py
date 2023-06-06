@@ -1,9 +1,12 @@
 from time import sleep
+
+from appium.webdriver import WebElement
 from appium.webdriver.common.appiumby import By
 import os
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from settings import *
+from appium.webdriver.extensions import location
 
 
 class PageUtils:
@@ -20,12 +23,12 @@ class PageUtils:
         elif type(values) is list:
             for value in values:
                 try:
-                    return self.get_element_by_type(method, value)
+                    return self.get_elements_by_type(method, value)
                 except NoSuchElementException:
                     pass
             raise NoSuchElementException
 
-    def get_element_by_type(self, method, value):
+    def get_element_by_type(self, method, value) ->WebElement:
         if method == 'accessibility_id':
             return self.driver.find_element_by_accessibility_id(value)
         elif method == 'android':
@@ -125,17 +128,21 @@ class PageUtils:
 
         # android scroll
 
-    def android_scroll(self, locator):
+    def android_scroll(self, container_locator, target_locator):
         for _ in range(15):
-            end_y = 950
             try:
-                value = self.get_element(locator).is_displayed()
+                element = self.wait_visible(container_locator)
+                temp = element.rect
+                x = (temp.get('width')/2 + temp.get('x'))
+                y = (temp.get('height')/2 + temp.get('y'))
+                y2 = y-y*0.3
+                self.driver.swipe(x, y, x, y2, 300)
+
+                value = self.get_element(target_locator).is_displayed()
                 if value is True:
                     break
             except NoSuchElementException:
-                self.driver.swipe(370, 1400, 370, end_y, 330)
-                self.driver.implicitly_wait(2)
-                continue
+                pass
 
     def ios_scroll(self, locator):
         el = self.wait_visible(locator)
@@ -143,16 +150,23 @@ class PageUtils:
 
         # common method to scroll in android & ios
 
-    def scrolling(self, locator):
+    def scrolling(self, container_locator, target_locator):
         if platform == 'ios':
-            self.ios_scroll(locator)
+            self.ios_scroll(container_locator, target_locator)
         else:
-            self.android_scroll(locator)
+            self.android_scroll(container_locator, target_locator)
 
         # get text
 
     def get_text(self, locator):
         element = self.wait_visible(locator)
         return element.text
+
+    def get_rect(self, locator):
+        element = self.wait_visible(locator)
+        temp = element.rect
+        x = (temp.get('width')+temp.get('x')/2)
+        y = (temp.get('height')+temp.get('y')/2)
+
 
 

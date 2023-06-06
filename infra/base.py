@@ -25,8 +25,8 @@ class Base():
     def ios_scroll(self, locator):
         self.page_utils.ios_scroll(locator)
 
-    def scrolling(self, locator):
-        self.page_utils.scrolling(locator)
+    def scrolling(self, container_locator, target_locator):
+        self.page_utils.scrolling(container_locator, target_locator)
 
     def wait_visible(self, locator, timeout=10):
         self.page_utils.wait_visible(locator, timeout)
@@ -51,3 +51,6 @@ class Base():
 
     def get_text(self, locator):
         return self.page_utils.get_text(locator)
+
+    def get_rect(self, locator):
+        return self.page_utils.get_rect(locator)

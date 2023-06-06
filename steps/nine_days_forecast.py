@@ -1,3 +1,5 @@
+from time import sleep
+
 from page.disclaimer_page import Disclaimer
 from page.background_location_access_page import BackgroundLocationAccess
 from page.device_location_access_page import DeviceLocationAccess
@@ -92,6 +94,7 @@ def clicks_allow_only_while_using_the_app(driver):
     driver = DeviceLocationAccess(driver)
     try:
         DeviceLocationAccess.device_location_access_allow(driver)
+        sleep(3)
         print("The user clicks Allow only while using the app in Device Location Access page")
 
     except NoSuchElementException as e:
@@ -113,9 +116,7 @@ def in_device_location_access_page_with_time(driver):
 def clicks_allow_all_the_time_in_device_location_access_page_with_time(driver):
     driver = DeviceLocationAccess(driver)
     try:
-        DeviceLocationAccess.device_location_access_allow_alltime(driver)
-        print("The user clicks Allow all the time in Device location access page with time factor")
-
+        DeviceLocationAccess.device_location_access_allow_all_time(driver)
     except NoSuchElementException as e:
         print("Failed", e)
 
@@ -192,6 +193,7 @@ def scroll_down_menu_bar_and_click_nine_days_forecast(driver):
     driver = Home(driver)
     try:
         Home.scroll_menu_bar(driver)
+        sleep(3)
         Home.select_nine_days_forecast(driver)
         print("the user selects the 9 Days Forecast")
 
