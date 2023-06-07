@@ -132,9 +132,9 @@ class PageUtils:
         for _ in range(15):
             try:
                 element = self.wait_visible(container_locator)
-                temp = element.rect
-                x = (temp.get('width')/2 + temp.get('x'))
-                y = (temp.get('height')/2 + temp.get('y'))
+                container = element.rect
+                x = (container.get('width')/2 + container.get('x'))
+                y = (container.get('height')/2 + container.get('y'))
                 y2 = y-y*0.3
                 self.driver.swipe(x, y, x, y2, 300)
 

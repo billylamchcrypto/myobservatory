@@ -193,7 +193,7 @@ def scroll_down_menu_bar_and_click_nine_days_forecast(driver):
     driver = Home(driver)
     try:
         Home.scroll_menu_bar(driver)
-        sleep(3)
+        sleep(5)
         Home.select_nine_days_forecast(driver)
         print("the user selects the 9 Days Forecast")
 
