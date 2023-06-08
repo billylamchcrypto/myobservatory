@@ -4,12 +4,13 @@ import yaml
 if os.path.exists(os.path.dirname(__file__) + "/yml/config.yml"):
     env = os.environ.get('env', 'production')
     env = env.lower()
-    if env in ['production']:
-        CONFIG = yaml.safe_load(open(os.path.dirname(__file__) + "/yml/config.yml", 'r'))[env]
-        TEST_DATA = yaml.safe_load(open(os.path.dirname(__file__) + "/yml/production.yml".format(env)))
-    else:
-        raise "Invalid Environment"
+
+    CONFIG = yaml.safe_load(open(os.path.dirname(__file__) + "/yml/config.yml", 'r'))[env]
+    # TEST_DATA = yaml.safe_load(open(os.path.dirname(__file__) + "/yml/{}.yml".format(env)))
+
+    if not CONFIG:
+        raise ValueError("Invalid Environment")
 else:
-    raise "config.yml does not exists"
+    raise FileNotFoundError("config.yml does not exists")
 
 platform = (CONFIG['platform'])

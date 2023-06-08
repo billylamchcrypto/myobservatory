@@ -1,7 +1,7 @@
 from my_utils.page_utils import PageUtils
 
 
-class Base():
+class Base:
 
     def __init__(self, driver):
         self.driver = driver
@@ -16,8 +16,8 @@ class Base():
     def get_element_by_type(self, method, value):
         self.page_utils.get_element_by_type(method, value)
 
-    def is_visible(self, locator):
-        self.page_utils.is_visible(locator)
+    def is_visible(self, locator) -> bool:
+        return self.page_utils.is_visible(locator)
 
     def android_scroll(self, locator):
         self.page_utils.android_scroll(locator)
@@ -51,6 +51,3 @@ class Base():
 
     def get_text(self, locator):
         return self.page_utils.get_text(locator)
-
-    def get_rect(self, locator):
-        return self.page_utils.get_rect(locator)

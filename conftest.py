@@ -1,6 +1,8 @@
 import pytest
+from page import Pages
 from settings import*
 from appium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
 
 
 @pytest.fixture(scope="class")
@@ -21,3 +23,12 @@ def driver():
     yield driver
     driver.quit()
 
+
+@pytest.fixture(scope="class")
+def pages(driver):
+    pages = Pages(driver)
+    return pages
+
+# @pytest.fixture(scope="class")
+# def disclaimer(driver):
+#     return Disclaimer(driver)

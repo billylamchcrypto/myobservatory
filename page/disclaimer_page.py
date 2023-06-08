@@ -5,7 +5,6 @@ class Disclaimer(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver = driver
 
 # aos element
     DISCLAIMER_TITLE = ('id', 'hko.MyObservatory_v1_0:id/txt_title')

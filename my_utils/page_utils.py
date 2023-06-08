@@ -1,20 +1,27 @@
 from time import sleep
+from typing import Optional, Tuple
 
 from appium.webdriver import WebElement
 from appium.webdriver.common.appiumby import By
-import os
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from settings import *
-from appium.webdriver.extensions import location
 
 
 class PageUtils:
+    DEFAULT_TIMEOUT = 10
+
     def __init__(self, driver):
         self.driver = driver
 
-    def get_element(self, locator):
+    def _wait(self, locator: Tuple[str, str], timeout: Optional[int] = None,
+              expected_condition: EC = EC.visibility_of_element_located, ) -> WebElement:
+        if not timeout:
+            timeout = self.DEFAULT_TIMEOUT
+        return WebDriverWait(self.driver, timeout).until(expected_condition(locator))
 
+    def get_element(self, locator):
         method = locator[0]
         values = locator[1]
 
@@ -28,7 +35,7 @@ class PageUtils:
                     pass
             raise NoSuchElementException
 
-    def get_element_by_type(self, method, value) ->WebElement:
+    def get_element_by_type(self, method, value) -> WebElement:
         if method == 'accessibility_id':
             return self.driver.find_element_by_accessibility_id(value)
         elif method == 'android':
@@ -81,11 +88,10 @@ class PageUtils:
 
         # element visible
 
-    def is_visible(self, locator):
+    def is_visible(self, locator) -> bool:
         try:
-            self.get_element(locator).is_displayed()
-            return True
-        except NoSuchElementException:
+            return self._wait(locator).is_displayed()
+        except Exception:
             return False
 
     def wait_visible(self, locator, timeout=25):
@@ -102,8 +108,7 @@ class PageUtils:
         # clicks and taps
 
     def click(self, locator):
-        element = self.wait_visible(locator)
-        element.click()
+        self._wait(locator).click()
 
     def tap(self, locator):
         element = self.wait_visible(locator)
@@ -133,9 +138,9 @@ class PageUtils:
             try:
                 element = self.wait_visible(container_locator)
                 container = element.rect
-                x = (container.get('width')/2 + container.get('x'))
-                y = (container.get('height')/2 + container.get('y'))
-                y2 = y-y*0.3
+                x = (container.get('width') / 2 + container.get('x'))
+                y = (container.get('height') / 2 + container.get('y'))
+                y2 = y - y * 0.3
                 self.driver.swipe(x, y, x, y2, 300)
 
                 value = self.get_element(target_locator).is_displayed()
@@ -161,12 +166,3 @@ class PageUtils:
     def get_text(self, locator):
         element = self.wait_visible(locator)
         return element.text
-
-    def get_rect(self, locator):
-        element = self.wait_visible(locator)
-        temp = element.rect
-        x = (temp.get('width')+temp.get('x')/2)
-        y = (temp.get('height')+temp.get('y')/2)
-
-
-
