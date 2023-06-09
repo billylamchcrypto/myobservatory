@@ -24,11 +24,7 @@ def driver():
     driver.quit()
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="class", autouse=True)
 def pages(driver):
     pages = Pages(driver)
     return pages
-
-# @pytest.fixture(scope="class")
-# def disclaimer(driver):
-#     return Disclaimer(driver)
