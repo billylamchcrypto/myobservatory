@@ -1,10 +1,9 @@
 from hamcrest import assert_that
-
-from infra.base import Base
+from page.base_screen import BaseScreen
 from settings import *
 
 
-class Home(Base):
+class Home(BaseScreen):
 
     def __init__(self, driver):
         super().__init__(driver)

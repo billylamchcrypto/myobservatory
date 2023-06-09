@@ -1,7 +1,7 @@
-from infra.base import Base
+from page.base_screen import BaseScreen
 
 
-class BackgroundLocationAccess(Base):
+class BackgroundLocationAccess(BaseScreen):
 
     def __init__(self, driver):
         super().__init__(driver)

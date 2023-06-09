@@ -1,8 +1,7 @@
-from infra.base import Base
-from hamcrest import assert_that, equal_to
+from page.base_screen import BaseScreen
 
 
-class WhatsNew(Base):
+class WhatsNew(BaseScreen):
 
     def __init__(self, driver):
         super().__init__(driver)

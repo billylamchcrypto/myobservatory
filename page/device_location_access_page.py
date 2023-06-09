@@ -1,7 +1,7 @@
-from infra.base import Base
+from page.base_screen import BaseScreen
 
 
-class DeviceLocationAccess(Base):
+class DeviceLocationAccess(BaseScreen):
 
     def __init__(self, driver):
         super().__init__(driver)

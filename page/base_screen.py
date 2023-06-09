@@ -1,6 +1,5 @@
 from time import sleep
 from typing import Optional, Tuple
-
 from appium.webdriver import WebElement
 from appium.webdriver.common.appiumby import By
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
@@ -9,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from settings import *
 
 
-class PageUtils:
+class BaseScreen:
     DEFAULT_TIMEOUT = 10
 
     def __init__(self, driver):
@@ -136,7 +135,7 @@ class PageUtils:
     def android_scroll(self, container_locator, target_locator):
         for _ in range(15):
             try:
-                element = self.wait_visible(container_locator)
+                element = self._wait(container_locator)
                 container = element.rect
                 x = (container.get('width') / 2 + container.get('x'))
                 y = (container.get('height') / 2 + container.get('y'))

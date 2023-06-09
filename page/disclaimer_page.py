@@ -1,7 +1,7 @@
-from infra.base import Base
+from page.base_screen import BaseScreen
 
 
-class Disclaimer(Base):
+class Disclaimer(BaseScreen):
 
     def __init__(self, driver):
         super().__init__(driver)
