@@ -1,4 +1,4 @@
-from api_testing.utils import Utils
+from api_testing_2.utils import Utils
 
 # data type params
 LOCAL_WEATHER_FORECAST = "flw"
@@ -17,3 +17,4 @@ def test_one():
     b = "en"
     run.get_status(a, b)
     run.get_data(a, b)
+    run.humidity_of_day_after_tmr(a,b)

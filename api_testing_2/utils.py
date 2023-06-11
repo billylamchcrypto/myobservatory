@@ -1,5 +1,4 @@
-from dataclasses import dataclass
-
+import datetime
 import requests
 
 
@@ -20,11 +19,26 @@ class Utils:
     def get_data(self, data_type, lang):
         response = self.connect_api(data_type, lang)
         data = response.json()
+        return data
 
-    def humidity_of_day_after_tmr(self):
-        pass
+    @staticmethod
+    def get_today():
+        current_date = datetime.date.today()
+        date_string = current_date.strftime("%Y%m%d")
+        return date_string
 
+    def humidity_of_day_after_tmr(self, data_type, lang):
+        data = self.get_data(data_type, lang)
+        forecast_date = Utils.get_today()
+        forecast_date = int(forecast_date) + 2
+        forecast_date = str(forecast_date)
 
+        for forecast in data["weatherForecast"]:
+            if forecast["forecastDate"] == forecast_date:
+                forecast_min_rh = str(forecast["forecastMinrh"]["value"])
+                forecast_max_rh = str(forecast["forecastMaxrh"]["value"])
+                print("The humidity of the day after tomorrow is " + forecast_min_rh + "-" + forecast_max_rh + "%")
+                break
 
 # @dataclass
 # class WeatherInfo:
