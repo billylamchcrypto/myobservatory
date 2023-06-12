@@ -65,6 +65,44 @@ def clicks_ok_button(pages: Pages):
         print("Failed", e)
 
 
+@then('the user is redirected to the new Location Access page')
+def in_new_location_access_page(pages: Pages):
+    try:
+        pages.device_location_access.new_device_location_access_here()
+        print("The user is redirected to the Device location access page")
+
+    except NoSuchElementException as e:
+        print("Failed", e)
+
+
+@when('the user clicks While using the app button')
+def clicks_while_using_the_app(pages: Pages):
+    try:
+        pages.device_location_access.while_using_the_app()
+        print("The user clicks Allow only while using the app in Device Location Access page")
+
+    except NoSuchElementException as e:
+        print("Failed", e)
+
+
+@then('the user is redirected to the Location Permission page')
+def in_location_permission(pages: Pages):
+    try:
+        pages.device_location_access.location_permission_here()
+        print("The user is redirected to the location permission page")
+
+    except NoSuchElementException as e:
+        print("Failed", e)
+
+
+@when('the user clicks the Back button')
+def clicks_back_button_in_location_permission(pages: Pages):
+    try:
+        pages.device_location_access.device_back()
+    except NoSuchElementException as e:
+        print("Failed", e)
+
+
 @then('the user is redirected to the device location access page')
 def in_device_location_access_page(pages: Pages):
     try:
@@ -147,7 +185,7 @@ def close_the_traffic_info_tutorial_page(pages: Pages):
 @then('the user is redirected to the Home page')
 def in_home_page(pages: Pages):
     try:
-        pages.home.go()
+        # pages.home.go()
         pages.home.home_here()
         print("the user is redirected to the Home page")
 

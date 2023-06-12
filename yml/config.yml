@@ -13,8 +13,8 @@ device_config: &device_config
         folder: '/Users/username/Library/Developer/Xcode/DerivedData/WordPress-bgx/Build/Products/Debug-iphonesimulator/WordPress.app'
     android:
         platformName: 'android'
-        platformVersion: '10'
-        deviceName: 'emulator-5554'
+        platformVersion: '12'
+        deviceName: 'R5CT31Z18ZE'
         automationName: 'uiautomator2'
         appPackage: 'hko.MyObservatory_v1_0'
         app: '/Users/billylam/Desktop/apk/myobs.apk'

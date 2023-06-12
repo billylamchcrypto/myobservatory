@@ -7,7 +7,7 @@ class DeviceLocationAccess(BaseScreen):
         super().__init__(driver)
         self.driver = driver
 
-# aos element
+# aos element only for AOS version 9
     DEVICE_LOCATION_ACCESS_TITLE = ('id', 'com.android.permissioncontroller:id/permission_message')
     DEVICE_LOCATION_ACCESS_ALLTIME_TITLE = ('id', 'com.android.permissioncontroller:id/permission_message')
     ALLOW_BUTTON = ('id', 'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
@@ -25,3 +25,23 @@ class DeviceLocationAccess(BaseScreen):
     def device_location_access_allow_all_time(self):
         self.click(self.ALLOW_ALL_TIME_BUTTON)
 
+# aos element only for AOS version 12
+    NEW_LOCATION_ACCESS_TITLE = ('id', 'com.android.permissioncontroller:id/permission_message')
+    WHILE_USING_THE_APP = ('id', 'com.android.permissioncontroller:id/permission_allow_foreground_only_button')
+    LOCATION_PERMISSION_TITLE = ('id', 'com.android.permissioncontroller:id/permission_message')
+    BACK = ('xpath', '//android.widget.ImageButton[@content-desc="Back"]')
+
+    def new_device_location_access_here(self):
+        self.is_visible(self.NEW_LOCATION_ACCESS_TITLE)
+
+    def while_using_the_app(self):
+        self.click(self.WHILE_USING_THE_APP)
+
+    def location_permission_here(self):
+        self.is_visible(self.LOCATION_PERMISSION_TITLE)
+
+    def back_in_location_permission(self):
+        self.click(self.BACK)
+
+    def clicks_device_back(self):
+        self.device_back()

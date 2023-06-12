@@ -113,6 +113,9 @@ class BaseScreen:
         element = self.wait_visible(locator)
         element.tap()
 
+    def device_back(self):
+        return self.driver.press_keycode(4)
+
     def hide_keyboard(self):
         try:
             sleep(1)
@@ -140,7 +143,7 @@ class BaseScreen:
                 x = (container.get('width') / 2 + container.get('x'))
                 y = (container.get('height') / 2 + container.get('y'))
                 y2 = y - y * 0.3
-                self.driver.swipe(x, y, x, y2, 300)
+                self.driver.swipe(x, y, x, y2, 250)
 
                 value = self.get_element(target_locator).is_displayed()
                 if value is True:
