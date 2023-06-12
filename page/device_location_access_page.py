@@ -1,3 +1,5 @@
+from hamcrest import assert_that
+
 from page.base_screen import BaseScreen
 
 
@@ -14,13 +16,14 @@ class DeviceLocationAccess(BaseScreen):
     ALLOW_ALL_TIME_BUTTON = ('id', 'com.android.permissioncontroller:id/permission_allow_button')
 
     def device_location_access_here(self):
-        self.is_visible(self.DEVICE_LOCATION_ACCESS_TITLE)
+        assert_that(self.is_visible(self.DEVICE_LOCATION_ACCESS_TITLE), "failed reason")
 
     def device_location_access_allow(self):
         self.click(self.ALLOW_BUTTON)
 
     def device_location_access_alltime_here(self):
         self.is_visible(self.DEVICE_LOCATION_ACCESS_ALLTIME_TITLE)
+        assert_that(self.is_visible(self.DEVICE_LOCATION_ACCESS_ALLTIME_TITLE), "failed reason")
 
     def device_location_access_allow_all_time(self):
         self.click(self.ALLOW_ALL_TIME_BUTTON)
@@ -33,12 +36,14 @@ class DeviceLocationAccess(BaseScreen):
 
     def new_device_location_access_here(self):
         self.is_visible(self.NEW_LOCATION_ACCESS_TITLE)
+        assert_that(self.is_visible(self.NEW_LOCATION_ACCESS_TITLE), "Failed to go to The Device location access page")
 
     def while_using_the_app(self):
         self.click(self.WHILE_USING_THE_APP)
 
     def location_permission_here(self):
         self.is_visible(self.LOCATION_PERMISSION_TITLE)
+        assert_that(self.is_visible(self.LOCATION_PERMISSION_TITLE), "Failed to go to the location permission page")
 
     def back_in_location_permission(self):
         self.click(self.BACK)

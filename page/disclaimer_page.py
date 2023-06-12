@@ -1,3 +1,5 @@
+from hamcrest import assert_that
+
 from page.base_screen import BaseScreen
 
 
@@ -15,7 +17,7 @@ class Disclaimer(BaseScreen):
         self.click(self.AGREE_BUTTON)
 
     def disclaimer_here(self):
-        self.is_visible(self.DISCLAIMER_TITLE)
+        assert_that(self.is_visible(self.DISCLAIMER_TITLE), "Failed to go to the Disclaimer page")
 
 
 

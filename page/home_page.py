@@ -15,7 +15,7 @@ class Home(BaseScreen):
     MENU_CONTAINER = ('xpath', '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout')
 
     def home_here(self):
-        assert_that(self.is_visible(self.HOME_TITLE), "failed reason")
+        assert_that(self.is_visible(self.HOME_TITLE), "Failed to go to the Home page")
 
     def open_menu_bar(self):
         self.click(self.MENU_BAR)

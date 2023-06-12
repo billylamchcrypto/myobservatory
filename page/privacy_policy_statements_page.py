@@ -1,3 +1,5 @@
+from hamcrest import assert_that
+
 from page.base_screen import BaseScreen
 
 
@@ -12,7 +14,7 @@ class PrivacyPolicyStatements(BaseScreen):
     AGREE_BUTTON = ('id', 'hko.MyObservatory_v1_0:id/btn_agree')
 
     def statements_here(self):
-        self.is_visible(self.STATEMENTS_TITLE)
+        assert_that(self.is_visible(self.STATEMENTS_TITLE), "Failed to go to the Privacy Policy Statements page")
 
     def statements_agree(self):
         self.click(self.AGREE_BUTTON)
