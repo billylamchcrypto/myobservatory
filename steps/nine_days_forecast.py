@@ -1,5 +1,4 @@
 from time import sleep
-
 from page import Pages
 from pytest_bdd import given, when, then
 from selenium.common.exceptions import NoSuchElementException
