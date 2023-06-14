@@ -28,3 +28,4 @@ def driver():
 def pages(driver):
     pages = Pages(driver)
     return pages
+

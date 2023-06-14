@@ -13,3 +13,4 @@ else:
     raise FileNotFoundError("config.yml does not exists")
 
 platform = (CONFIG['platform'])
+

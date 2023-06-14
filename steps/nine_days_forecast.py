@@ -220,3 +220,4 @@ def in_nine_days_forecast(pages: Pages):
         print("the user is in the 9 Days Forecast page")
     except NoSuchElementException as e:
         print("Failed", e)
+

@@ -1,7 +1,6 @@
 from time import sleep
 from typing import Optional, Tuple
 from appium.webdriver import WebElement
-from appium.webdriver.common.appiumby import By
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

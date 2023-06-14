@@ -4,13 +4,8 @@ from page.base_screen import BaseScreen
 
 
 class BackgroundLocationAccess(BaseScreen):
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
-# aos element
-    BACKGROUND_LOCATION_ACCESS_TITLE = ('id', 'hko.MyObservatory_v1_0:id/alertTitle')
+    # aos element
+    BACKGROUND_LOCATION_ACCESS_TITLE = ('id', 'alertTitle')
     OK_BUTTON = ('id', 'android:id/button1')
 
     def background_location_access_here(self):

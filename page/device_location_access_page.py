@@ -4,12 +4,7 @@ from page.base_screen import BaseScreen
 
 
 class DeviceLocationAccess(BaseScreen):
-
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
-
-# aos element only for AOS version 9
+    # aos element only for AOS version 9
     DEVICE_LOCATION_ACCESS_TITLE = ('id', 'com.android.permissioncontroller:id/permission_message')
     DEVICE_LOCATION_ACCESS_ALLTIME_TITLE = ('id', 'com.android.permissioncontroller:id/permission_message')
     ALLOW_BUTTON = ('id', 'com.android.permissioncontroller:id/permission_allow_foreground_only_button')

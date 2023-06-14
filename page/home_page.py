@@ -4,12 +4,8 @@ from settings import *
 
 
 class Home(BaseScreen):
-
-    def __init__(self, driver):
-        super().__init__(driver)
-
-# aos element only for AOS
-    HOME_TITLE = ('xpath', '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView')
+    # aos element only for AOS
+    HOME_TITLE = ('xpath', '//*[contains(@text, "MyObservatory")]')
     MENU_BAR = ('xpath', '//android.widget.ImageButton[@content-desc="Navigate up"]')
     NINE_DAYS_FORECAST = ('xpath', '//*[contains(@text, "9-Day Forecast")]')
     MENU_CONTAINER = ('xpath', '/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[2]/android.widget.FrameLayout/androidx.drawerlayout.widget.DrawerLayout/android.widget.LinearLayout')
